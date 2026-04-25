@@ -64,7 +64,7 @@ Rules:
     // Match courses for each module
     const matched_modules = curriculum.modules.map((module) => ({
       module,
-      courses: matchCourses(module.topics, current_level, 3),
+      courses: matchCourses(module.topics, current_level, 4),
     }));
 
     // Save to Supabase

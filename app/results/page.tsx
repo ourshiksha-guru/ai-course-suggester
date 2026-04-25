@@ -79,10 +79,12 @@ function CompareModal({
   const PLATFORM_LABEL: Record<string, string> = {
     udemy: "Udemy",
     tutedude: "TuteDude",
+    classcentral: "Class Central",
   };
   const PLATFORM_COLOR: Record<string, string> = {
     udemy: "bg-orange-100 text-orange-700 border-orange-200",
     tutedude: "bg-green-100 text-green-700 border-green-200",
+    classcentral: "bg-blue-100 text-blue-700 border-blue-200",
   };
 
   return (
@@ -182,8 +184,12 @@ function CompareModal({
                 <ScoreBar value={scores.content} color={isBest ? "bg-amber-400" : "bg-indigo-400"} />
 
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-500">Value</span>
-                  <span className="font-semibold text-gray-800">₹{course.price_inr}</span>
+                  <span className="text-gray-500">Price</span>
+                  <span className="font-semibold text-gray-800">
+                    {course.price_inr === 0 ? (
+                      <span className="text-emerald-600 font-bold">FREE</span>
+                    ) : `₹${course.price_inr}`}
+                  </span>
                 </div>
                 <ScoreBar value={scores.value} color={isBest ? "bg-amber-400" : "bg-indigo-400"} />
               </div>
@@ -235,6 +241,7 @@ function CompareModal({
 const PLATFORM_COLORS: Record<string, string> = {
   udemy: "bg-orange-100 text-orange-700",
   tutedude: "bg-green-100 text-green-700",
+  classcentral: "bg-blue-100 text-blue-700",
 };
 
 function CourseCard({ course }: { course: Course }) {
@@ -252,8 +259,11 @@ function CourseCard({ course }: { course: Course }) {
         <p className="text-xs text-gray-400 mt-0.5">{course.instructor}</p>
         <div className="flex items-center gap-2 mt-1.5 flex-wrap">
           <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${PLATFORM_COLORS[course.platform]}`}>
-            {course.platform === "tutedude" ? "TuteDude" : "Udemy"}
+            {course.platform === "tutedude" ? "TuteDude" : course.platform === "classcentral" ? "Class Central" : "Udemy"}
           </span>
+          {course.platform === "classcentral" && (
+            <span className="text-xs bg-emerald-50 text-emerald-600 px-2 py-0.5 rounded-full font-medium">FREE</span>
+          )}
           <span className="text-xs text-yellow-500">★ {course.rating}</span>
           <span className="text-xs text-gray-400">({(course.reviews / 1000).toFixed(0)}k)</span>
           <span className="text-xs text-gray-400">{course.duration_hours}h</span>
@@ -433,7 +443,7 @@ export default function ResultsPage() {
         </div>
 
         <div className="text-center pt-4">
-          <p className="text-xs text-gray-400">Courses from Udemy &amp; TuteDude · Built with SkillWeaver</p>
+          <p className="text-xs text-gray-400">Courses from Udemy, TuteDude &amp; Class Central · Built with SkillWeaver</p>
           <Link href="/" className="text-sm text-indigo-600 hover:underline mt-1 inline-block">
             Generate another roadmap
           </Link>

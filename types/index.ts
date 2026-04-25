@@ -18,7 +18,7 @@ export interface Curriculum {
 export interface Course {
   id: string;
   title: string;
-  platform: "udemy" | "tutedude";
+  platform: "udemy" | "tutedude" | "classcentral";
   url: string;
   instructor: string;
   rating: number;
