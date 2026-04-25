@@ -60,18 +60,15 @@ export default function Home() {
       <header className="border-b border-indigo-100 bg-white/70 backdrop-blur-sm sticky top-0 z-10">
         <div className="max-w-5xl mx-auto px-4 py-4 flex items-center gap-3">
           <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white font-bold text-sm">
-            OS
+            SW
           </div>
-          <span className="font-semibold text-gray-900">Our Shiksha</span>
-          <span className="text-xs text-gray-400 ml-1">AI Course Suggester</span>
+          <span className="font-semibold text-gray-900">SkillWeaver</span>
+          <span className="text-xs text-gray-400 ml-1">Weaving courses into a structured roadmap</span>
         </div>
       </header>
 
       <div className="max-w-2xl mx-auto px-4 py-16">
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 bg-indigo-100 text-indigo-700 text-xs font-medium px-3 py-1 rounded-full mb-4">
-            Powered by GPT-4o
-          </div>
           <h1 className="text-4xl font-bold text-gray-900 mb-4 leading-tight">
             Your personalised<br />
             <span className="text-indigo-600">learning roadmap</span>
